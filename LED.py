@@ -50,7 +50,6 @@ def set_rgb(integer, leds):
     for i in range(len(binary_state)):
         index = len(leds)-i-1
         index2 = len(binary_state)-i-1
-        print(index)
         GPIO.output(leds[index], bool_to_pin(binary_state[index2]))
 
 def init_bin_arr(s):
