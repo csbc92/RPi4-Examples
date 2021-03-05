@@ -53,20 +53,20 @@ def fill(rgb):
 def set_color(i, rgb):
     pixels.setPixelColorRGB(i, rgb[0], rgb[1], rgb[2])
 
-def cycle():
+def cycle(wait):
     fill((255, 0, 0))
     pixels.show()
-    time.sleep(1)
+    time.sleep(wait)
 
     fill((0, 255, 0))
     pixels.show()
-    time.sleep(1)
+    time.sleep(wait)
 
     fill((0, 0, 255))
     pixels.show()
-    time.sleep(1)
+    time.sleep(wait)
 
 
 while True:
-    cycle() # cycle between RGB
-    rainbow_cycle(0.003)  # rainbow cycle with 1ms delay per step
+    cycle(0.2) # cycle between RGB
+    #rainbow_cycle(0.003)  # rainbow cycle with 1ms delay per step
