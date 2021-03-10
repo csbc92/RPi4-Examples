@@ -20,7 +20,7 @@ num_pixels = 4
 ORDER = neopixel.GRB
 
 # brightness=0.2 ~10mA and brightness=1 ~62mA with rainbow effect and 5 NeoPixels
-pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=1, auto_write=False, pixel_order=ORDER)
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=1.0, auto_write=False, pixel_order=ORDER)
 
 
 def wheel(pos):
@@ -55,25 +55,28 @@ def rainbow_cycle(wait):
 
 
 while True:
-    # Comment this line out if you have RGBW/GRBW NeoPixels
-#    pixels.fill((255, 0, 0))
-    # Uncomment this line if you have RGBW/GRBW NeoPixels
-    # pixels.fill((255, 0, 0, 0))
-#    pixels.show()
-#    time.sleep(1)
+    delay = 0.5
+    #pixels.fill((5, 5, 5))
+    #pixels.show()
+    #time.sleep(0.5)
 
-    # Comment this line out if you have RGBW/GRBW NeoPixels
-#    pixels.fill((0, 255, 0))
-    # Uncomment this line if you have RGBW/GRBW NeoPixels
-    #pixels.fill((0, 255, 0, 0))
-#    pixels.show()
-#    time.sleep(1)
+    for i in range(num_pixels):
+        pixels[i] = (255, 255, 255)
+        pixels.show()
+        time.sleep(delay)
 
-    # Comment this line out if you have RGBW/GRBW NeoPixels
-#    pixels.fill((0, 0, 255))
-    # Uncomment this line if you have RGBW/GRBW NeoPixels
-    # pixels.fill((0, 0, 255, 0))
-#    pixels.show()
-#    time.sleep(1)
+    #time.sleep(delay)
 
-    rainbow_cycle(0.002)  # rainbow cycle with 1ms delay per step
+    for i in range(num_pixels):
+        pixels[i] = (0, 255, 0)
+        pixels.show()
+        time.sleep(delay)
+
+    #time.sleep(0.5)
+
+    for i in range(num_pixels):
+        pixels[i] = (0, 0, 255)
+        pixels.show()
+        time.sleep(delay)
+
+    #time.sleep(delay)

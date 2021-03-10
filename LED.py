@@ -40,7 +40,7 @@ def set_rgb(integer, leds):
         raise Exception("Illegal parameter: state. Must be within [0, 1, .., 7]")
     
     binary_state = convert_to_bin(integer)
-    print(binary_state)
+    #print(binary_state)
     
     turn_off_rgb(leds)
     
@@ -101,4 +101,4 @@ rgb_led = init_rgb_led()
 while True:
     for i in range(1,8):
         set_rgb(i, rgb_led)
-        time.sleep(0.2)
+        time.sleep(0.5)
