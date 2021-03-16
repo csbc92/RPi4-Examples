@@ -10,6 +10,7 @@ pixel_pin = 18
 num_pixels = 1
 
 # brightness=0.2 ~10mA and brightness=1 ~62mA with rainbow effect and 5 NeoPixels
+intensity = 0.1
 pixels = Adafruit_NeoPixel(num_pixels, pixel_pin)
 pixels.begin()
 
@@ -47,11 +48,13 @@ def rainbow_cycle(wait):
 
 def fill(rgb):
     for i in range(pixels.numPixels()):
-        #pixels.setPixelColorRGB(i, rgb[0], rgb[1], rgb[2])
         set_color(i, rgb)
 
 def set_color(i, rgb):
-    pixels.setPixelColorRGB(i, rgb[0], rgb[1], rgb[2])
+    r = int(rgb[0] * intensity)
+    g = int(rgb[1] * intensity)
+    b = int(rgb[2] * intensity)
+    pixels.setPixelColorRGB(i, r, g, b)
 
 def cycle(wait):
     fill((255, 0, 0))
@@ -68,5 +71,5 @@ def cycle(wait):
 
 
 while True:
-    cycle(0.2) # cycle between RGB
-    #rainbow_cycle(0.003)  # rainbow cycle with 1ms delay per step
+#    cycle(0.5) # cycle between RGB
+     rainbow_cycle(0.005)  # rainbow cycle with 1ms delay per step
